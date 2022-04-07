@@ -18,7 +18,7 @@ organizzare i singoli membri in card/schede
 
 // definire un array di oggetti ==> membri del team
 const team = [];
-
+const elementUser = document.querySelector('.row');
 
 function generateMyTeamUser(firstName, secondName, role) {
     const user = {
@@ -26,11 +26,18 @@ function generateMyTeamUser(firstName, secondName, role) {
         cognome: secondName,
         ruolo: role
     }
-
     team.push(user);
 
 }
 
 //console.log(team);
+
+function generateElementDom(element, classDom, insertIn) {
+    const elementDom = document.createElement(element);
+    elementDom.classList.add(classDom);
+    insertIn.append(elementDom)
+}
+
+//generateElementDom('div', '.cols', elementUser);
 
 // Ogni membro ha le informazioni necessarie per stampare le relative informazioni: Nome, Ruolo e Foto.
