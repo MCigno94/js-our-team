@@ -20,18 +20,19 @@ organizzare i singoli membri in card/schede
 const team = [];
 const btnInsertElement = document.getElementById('btnInsert');
 
-let fullName = document.getElementById('fullName').innerHTML;
-let role = document.getElementById('role').innerHTML;
-let image = document.getElementById('image').attributes[1];
 
-
-function generateMyTeamUser(fullName, role, image) {
+function generateMyTeamUser() {
+    let fullName = document.getElementById('fullName').value;
+    let role = document.getElementById('role').value;
+    let image = document.getElementById('image').value;
     const user = {
         fullName: fullName,
         role: role,
         image: image
     }
     team.push(user);
+
+    console.log(team);
 }
 
 //console.log(team);
@@ -39,29 +40,25 @@ function generateMyTeamUser(fullName, role, image) {
 function generateElementDom(element, classDom) {
     const elementDom = document.createElement(element);
     elementDom.classList.add(classDom);
+    return elementDom;
 }
 
 //generateElementDom('div', '.card', elementUser);
-generateElementDom('div', '.cols');
+//generateElementDom('div', '.cols');
 
 function generateAttribute(attribute, link) {
     const elementDom = document.createAttribute(attribute);
     elementDom.value = link;
 }
+
 let elementUser = document.querySelector('.row');
-let elementCols = generateElementDom('div', '.cols');
+let elementCols = generateElementDom('div', 'cols');
 elementUser.appendChild(elementCols)
-let elementCard = generateElementDom('div', '.card');
-let elementCardImg = generateElementDom('img', '.img-fluid');
-let elementCardDescription = generateElementDom('p', '.card-text');
+let elementCard = generateElementDom('div', 'card');
+let elementCardImg = generateElementDom('img', 'img-fluid');
+let elementCardDescription = generateElementDom('p', 'card-text');
 let elementCardImgLink = generateAttribute('src', image)
 
-/* btnInsertElement.addEventListener('click', insertUser);
-
-function insertUser(event) {
-    event.preventDefault()
-        //console.log('cliccato');
-    elementUser.appendChild(elementCols);
-} */
+btnInsertElement.addEventListener('click', generateMyTeamUser);
 
 // Ogni membro ha le informazioni necessarie per stampare le relative informazioni: Nome, Ruolo e Foto.
