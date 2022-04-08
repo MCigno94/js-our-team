@@ -1,0 +1,19 @@
+.card {
+    text-align: center;
+}
+
+.name-text {
+    height: 15%;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.role-text {
+    color: grey;
+    opacity: 0.9;
+}
+
+.bg_container {
+    background-color: antiquewhite;
+}

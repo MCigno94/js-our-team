@@ -21,11 +21,12 @@ const team = [];
 let user;
 const btnInsertElement = document.getElementById('btnInsert');
 let elementUser = document.querySelector('.row');
-let elementCols = generateElementDom('div', 'cols');
-let elementCard = generateElementDom('div', 'card');
-let elementCardImg = generateElementDom('img', 'img-fluid');
-let elementCardNameUser = generateElementDom('p', 'card-text');
-let elementCardRoleUser = generateElementDom('p', 'card-text');
+let elementCols;
+let elementCard;
+let elementCardImg;
+let elementCardNameUser;
+let elementCardRoleUser;
+
 //console.log(elementCardImgLink);
 
 function generateMyTeamUser() {
@@ -39,10 +40,12 @@ function generateMyTeamUser() {
     }
     team.push(user);
     insertElementDom();
+    elementCardNameUser.innerHTML = user.fullName;
+    elementCardRoleUser.innerHTML = user.role;
     elementCardImg.setAttribute('src', image);
 
     //console.log(team);
-    console.log('ho cliccato');
+    //console.log('ho cliccato');
 }
 
 //console.log(team);
@@ -59,12 +62,16 @@ function generateElementDom(element, classDom) {
 btnInsertElement.addEventListener('click', generateMyTeamUser);
 
 function insertElementDom() {
+    elementCols = generateElementDom('div', 'cols');
+    elementCard = generateElementDom('div', 'card');
+    elementCardImg = generateElementDom('img', 'img-fluid');
+    elementCardNameUser = generateElementDom('p', 'name-text');
+    elementCardRoleUser = generateElementDom('p', 'role-text');
     elementUser.appendChild(elementCols);
     elementCols.appendChild(elementCard);
     elementCard.appendChild(elementCardImg);
     elementCard.appendChild(elementCardNameUser);
     elementCard.appendChild(elementCardRoleUser);
-    elementCardNameUser.innerHTML = user.fullName;
-    elementCardRoleUser.innerHTML = user.role;
+
 }
 // Ogni membro ha le informazioni necessarie per stampare le relative informazioni: Nome, Ruolo e Foto.
