@@ -43,24 +43,30 @@ function generateMyTeamUser() {
     elementCardNameUser.innerHTML = user.fullName;
     elementCardRoleUser.innerHTML = user.role;
     elementCardImg.setAttribute('src', image);
+    clean();
 
     //console.log(team);
     //console.log('ho cliccato');
 }
 
-//console.log(team);
-
+function clean() {
+    return fullName.value = '', role.value = '', image.value = '';
+}
+/** funzione per generare automaticamente degli elementi con le proprie classi
+ * @param {*} element elemento della DOM (<tag>)
+ * @param {*} classDom classe assegnata all'elemento appena creato
+ * @returns elemento completo con classe assegnata
+ */
 function generateElementDom(element, classDom) {
     const elementDom = document.createElement(element);
     elementDom.classList.add(classDom);
     return elementDom;
 }
 
-//generateElementDom('div', '.card', elementUser);
-//generateElementDom('div', '.cols');
-
 btnInsertElement.addEventListener('click', generateMyTeamUser);
 
+/** genero gli elementi da inserire al click nella DOM
+ */
 function insertElementDom() {
     elementCols = generateElementDom('div', 'cols');
     elementCard = generateElementDom('div', 'card');
@@ -72,6 +78,5 @@ function insertElementDom() {
     elementCard.appendChild(elementCardImg);
     elementCard.appendChild(elementCardNameUser);
     elementCard.appendChild(elementCardRoleUser);
-
 }
 // Ogni membro ha le informazioni necessarie per stampare le relative informazioni: Nome, Ruolo e Foto.
