@@ -18,21 +18,31 @@ organizzare i singoli membri in card/schede
 
 // definire un array di oggetti ==> membri del team
 const team = [];
+let user;
 const btnInsertElement = document.getElementById('btnInsert');
-
+let elementUser = document.querySelector('.row');
+let elementCols = generateElementDom('div', 'cols');
+let elementCard = generateElementDom('div', 'card');
+let elementCardImg = generateElementDom('img', 'img-fluid');
+let elementCardNameUser = generateElementDom('p', 'card-text');
+let elementCardRoleUser = generateElementDom('p', 'card-text');
+//console.log(elementCardImgLink);
 
 function generateMyTeamUser() {
     let fullName = document.getElementById('fullName').value;
     let role = document.getElementById('role').value;
     let image = document.getElementById('image').value;
-    const user = {
+    user = {
         fullName: fullName,
         role: role,
-        image: image
+        img: image
     }
     team.push(user);
+    insertElementDom();
+    elementCardImg.setAttribute('src', image);
 
-    console.log(team);
+    //console.log(team);
+    console.log('ho cliccato');
 }
 
 //console.log(team);
@@ -46,19 +56,15 @@ function generateElementDom(element, classDom) {
 //generateElementDom('div', '.card', elementUser);
 //generateElementDom('div', '.cols');
 
-function generateAttribute(attribute, link) {
-    const elementDom = document.createAttribute(attribute);
-    elementDom.value = link;
-}
-
-let elementUser = document.querySelector('.row');
-let elementCols = generateElementDom('div', 'cols');
-elementUser.appendChild(elementCols)
-let elementCard = generateElementDom('div', 'card');
-let elementCardImg = generateElementDom('img', 'img-fluid');
-let elementCardDescription = generateElementDom('p', 'card-text');
-let elementCardImgLink = generateAttribute('src', image)
-
 btnInsertElement.addEventListener('click', generateMyTeamUser);
 
+function insertElementDom() {
+    elementUser.appendChild(elementCols);
+    elementCols.appendChild(elementCard);
+    elementCard.appendChild(elementCardImg);
+    elementCard.appendChild(elementCardNameUser);
+    elementCard.appendChild(elementCardRoleUser);
+    elementCardNameUser.innerHTML = user.fullName;
+    elementCardRoleUser.innerHTML = user.role;
+}
 // Ogni membro ha le informazioni necessarie per stampare le relative informazioni: Nome, Ruolo e Foto.
